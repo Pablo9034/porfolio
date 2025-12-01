@@ -1,0 +1,27 @@
+---
+import Sun from '@assets/icons/sun.svg';
+import Moon from '@assets/icons/moon.svg';
+---
+
+<button astro-change-theme class="p-2 text-gray-800 dark:text-gray-100 bg-white/60 dark:bg-gray-900/60 backdrop-blur-md rounded-full shadow shadow-gray-600/60 dark:shadow-gray-900/60 cursor-pointer active:scale-95 transition-[scale]">
+    <Sun width="24" height="24" stroke-width={ 1.5 } class="dark:hidden" />
+    <Moon width="24" height="24" stroke-width={ 1.5 } class="not-dark:hidden" />
+</button>
+
+<script>
+    document.addEventListener('astro:page-load', ()=> {
+        const storedTheme = localStorage.getItem('theme');
+        
+        if(storedTheme) {
+            document.documentElement.setAttribute('data-theme', storedTheme);
+        }
+        
+        const button = document.querySelector('[astro-change-theme]') as HTMLButtonElement;
+        
+        button.addEventListener("click", ()=> {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            document.documentElement.setAttribute('data-theme', (currentTheme === 'dark') ? 'light' : 'dark');
+            localStorage.theme = (currentTheme === 'dark') ? 'light' : 'dark';
+        });
+    });
+</script>

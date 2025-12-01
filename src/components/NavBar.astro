@@ -1,0 +1,73 @@
+---
+import LanguageSelect from './LanguageSelect.astro';
+import ChangeTheme from './ChangeTheme.astro';
+
+interface Props {
+    sections: Array<string>;
+}
+
+const hrefSections = [ 'experience', 'projects', 'about_me' ];
+const { sections } = Astro.props;
+---
+
+<nav class="fixed max-lg:bottom-0 pb-5 lg:top-0 lg:left-0 lg:pb-0 lg:pt-5 z-50 w-full flex justify-center bg-linear-to-b from-transparent to-white dark:to-gray-900 lg:bg-linear-to-t lg:from-transparent lg:to-white dark:lg:to-gray-900">
+    <div class="w-fit flex items-center gap-3">
+        <ul class="min-w-[302px] px-4 py-2 text-gray-800 dark:text-gray-100 flex items-center gap-3 bg-white/60 dark:bg-gray-900/60 backdrop-blur-md rounded-full shadow shadow-gray-600/60 dark:shadow-gray-900/60"> 
+            <div class="flex-1 flex justify-between lg:gap-5">{
+                    sections.map((section, index)=> (
+                        <li id={`list-item-${ index }`} class={`text-sm md:text-base ${ index === 2 ? "hidden lg:block" : null }`}>
+                            <a href={ index === 3 ? '#' : `#${ hrefSections[index] }` }>{ section }</a>
+                        </li>
+                    ))
+            }</div>
+
+            <li class="text-sm md:text-base border-l-2 border-gray-400/50 pl-3">
+                <LanguageSelect />
+            </li>
+        </ul>
+    
+        <ChangeTheme client:load />
+    </div>
+</nav>
+
+<script>
+    document.addEventListener('astro:page-load', ()=> {
+        const observer = new IntersectionObserver((entries, observer)=> {
+            const items: { [key: string]: HTMLLIElement } = {
+                'experience': document.querySelector('#list-item-0') as HTMLLIElement,
+                'projects': document.querySelector('#list-item-1') as HTMLLIElement,
+                'about_me': document.querySelector('#list-item-2') as HTMLLIElement
+            };
+
+            entries.forEach((entry)=> {
+                if(window.screen.width < 1024) {
+                    if(entry.target.id === 'experience' && entry.isIntersecting) {
+                        items['experience'].classList.add('hidden');
+                        items['projects'].classList.remove('hidden');
+                        items['about_me'].classList.remove('hidden');
+                    } else if(entry.target.id === 'projects' && entry.isIntersecting) {
+                        items['experience'].classList.remove('hidden');
+                        items['projects'].classList.add('hidden');
+                        items['about_me'].classList.remove('hidden');
+                    } else {
+                        items['experience'].classList.remove('hidden');
+                        items['projects'].classList.remove('hidden');
+                        items['about_me'].classList.add('hidden');
+                    }
+                } else {
+                    if(entry.isIntersecting) {
+                        items[entry.target.id].classList.add('text-blue-500');
+                    } else {
+                        items[entry.target.id].classList.remove('text-blue-500');
+                    }
+                }
+            });
+        }, { root: null, rootMargin: '0px', threshold: 0.5 });
+
+        [
+            document.querySelector('#experience') as HTMLElement,
+            document.querySelector('#projects') as HTMLElement,
+            document.querySelector('#about_me') as HTMLElement
+        ].map((section)=> observer.observe(section));
+    });
+</script>

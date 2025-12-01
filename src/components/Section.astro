@@ -1,0 +1,20 @@
+---
+import type { SvgComponent } from 'astro/types';
+
+interface Props {
+    idSection: string;
+    icon: SvgComponent;
+    title: string;
+}
+
+const { idSection, icon: Icon, title } = Astro.props;
+---
+
+<section id={ idSection } class="mb-20 px-3 flex flex-col gap-5 md:gap-10">
+    <h2 class="text-3xl text-gray-950 dark:text-white font-semibold inline-flex items-center gap-2">
+        <Icon class="size-12" /> 
+        { title }
+    </h2>
+
+    <slot />
+</section>
