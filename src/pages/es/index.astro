@@ -70,16 +70,14 @@ import Whatsapp from '@assets/icons/whatsapp.svg';
 
     <Section idSection="projects" icon={ Code } title="Proyectos">
         <Project 
-            title="PokemonAPI - Galeria estatica de Pokemones" 
+            title="PokemonAPI - Galeria estatica de Pokemones"
+            pictures={{ light: PokemonAPILight, dark: PokemonAPIDark }}
             technologies={["Astro", "SolidJS", "TailwindCSS"]}
             links={{
                 preview: "https://pokemon-api-lac-nu.vercel.app/pokemons/1",
                 blog: "#",
                 github: "https://github.com/Pablo9034/PokemonAPI"
             }}>
-            <Picture src={PokemonAPILight} formats={['avif', 'webp']} alt="Captura de la web de PokemonAPI" slot="picture" class="h-56 rounded-xl object-cover md:h-72 dark:hidden shadow hover:scale-105 transition-[scale]" />
-            <Picture src={PokemonAPIDark} formats={['avif', 'webp']} alt="Captura de la web de PokemonAPI" slot="picture" class="h-56 rounded-xl object-cover md:h-72 not-dark:hidden shadow hover:scale-105 transition-[scale]" />
-
             <p class="mb-5 first-letter:pl-5">Este proyecto utiliza la PokeAPI para construir una galería interactiva que muestra a los Pokémon de la primera generación.</p>
         </Project>
     </Section>
