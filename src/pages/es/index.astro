@@ -16,6 +16,8 @@ import Github from '@assets/icons/github.svg';
 import Briefcase from '@assets/icons/briefcase.svg';
 import Right from '@assets/icons/row-right.svg';
 import Code from '@assets/icons/code.svg';
+import CombosSantiagoLight from '@assets/combos-santiago-light.png';
+import CombosSantiagoDark from '@assets/combos-santiago-dark.png';
 import PokemonAPILight from '@assets/pokeapi-light.png';
 import PokemonAPIDark from '@assets/pokeapi-dark.png';
 import User from '@assets/icons/user.svg';
@@ -70,12 +72,23 @@ import Whatsapp from '@assets/icons/whatsapp.svg';
 
     <Section idSection="projects" icon={ Code } title="Proyectos">
         <Project 
+            title="Combos Santiago"
+            pictures={{ light: CombosSantiagoLight, dark: CombosSantiagoDark }}
+            technologies={["Astro", "TailwindCSS"]}
+            links={{
+                preview: "#",
+                blog: "#",
+                github: "#"
+            }}>
+            <p class="mb-5 first-letter:pl-5">Landing page diseñada para la venta de comida en Cuba, con un estilo moderno y atractivo priorizando la velocidad y la experiencia de usuario.</p>
+        </Project>
+
+        <Project 
             title="PokemonAPI - Galeria estatica de Pokemones"
             pictures={{ light: PokemonAPILight, dark: PokemonAPIDark }}
             technologies={["Astro", "SolidJS", "TailwindCSS"]}
             links={{
                 preview: "https://pokemon-api-lac-nu.vercel.app/pokemons/1",
-                blog: "#",
                 github: "https://github.com/Pablo9034/PokemonAPI"
             }}>
             <p class="mb-5 first-letter:pl-5">Este proyecto utiliza la PokeAPI para construir una galería interactiva que muestra a los Pokémon de la primera generación.</p>

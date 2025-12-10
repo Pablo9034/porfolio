@@ -8,10 +8,11 @@ interface Props {
 }
 
 const { title } = Astro.props;
+const currentLanguage = Astro.originPathname.split('/').at(1);
 ---
 
 <!doctype html>
-<html lang="en" data-theme="dark" class="scroll-smooth">
+<html lang={ currentLanguage } data-theme="dark" class="scroll-smooth">
 	<head>
 		<ClientRouter />
 		<meta charset="UTF-8" />
@@ -23,7 +24,7 @@ const { title } = Astro.props;
 	<body class="text-black dark:text-white">
 		<main class="max-w-4xl mx-auto">
 			<Backgrounds />
-			
+
 			<slot />
 		</main>
 	</body>
