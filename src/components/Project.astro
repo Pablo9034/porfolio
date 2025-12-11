@@ -15,8 +15,7 @@ interface Props {
     technologies: Array<Technology>;
     links: {
         preview: string,
-        github?: string,
-        blog?: string
+        github?: string
     };
 }
 
@@ -39,7 +38,7 @@ const currentLanguage = Astro.originPathname.split('/').at(1);
 
     <div>
         <h3 class="text-2xl">{ title }</h3>
-        <ul class="text-white flex gap-2 mb-3 md:mb-5">{
+        <ul class="text-white flex flex-wrap gap-2 mb-3 md:mb-5">{
             technologies.map((technology)=> {
                 const TechnologyIcon = Icons[technology] as SvgComponent;
 
@@ -65,14 +64,11 @@ const currentLanguage = Astro.originPathname.split('/').at(1);
             </a>
 
             {
-                ['blog', 'github'].map((link)=> links[link as 'blog' | 'github']
-                    ? <a href="#" class="p-2 bg-transparent rounded-lg border-2 border-black dark:border-white inline-flex items-center gap-2 active:scale-95 transition-[scale]">
-                        { link === 'blog' ? <Blog width="24" height="24" /> : null }
-                        { link === 'github' ? <Github width="24" height="24" /> : null }
-                        <span>{ link === 'blog' ? 'Blog' : 'Github' }</span>
-                    </a>
-                    : null
-                )
+                links.github
+                ? <a href="#" class="p-2 bg-transparent rounded-lg border-2 border-black dark:border-white inline-flex items-center gap-2 active:scale-95 transition-[scale]">
+                    <Github width="24" height="24" /> <span>Github</span>
+                </a>
+                : null
             }
         </div>
     </div>

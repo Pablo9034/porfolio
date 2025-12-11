@@ -27,7 +27,7 @@ import Whatsapp from '@assets/icons/whatsapp.svg';
 ---
 
 <Layout title="Pablo Alberto | Programador y Desarrollador">
-    <NavBar sections={[ "Experiência", "Projetos", "Sobre mim", "Blog" ]} client:load />
+    <NavBar sections={[ "Experiência", "Projetos", "Sobre mim" ]} client:load />
 
     <header class="h-screen flex flex-col justify-center gap-5">
         <Picture src={Profile} formats={['avif', 'webp']} alt="Foto de perfil de Pablo" class="h-96 object-contain mask-b-from-75% mx-auto shadow-gray-600/60" />
@@ -77,7 +77,6 @@ import Whatsapp from '@assets/icons/whatsapp.svg';
             technologies={["Astro", "TailwindCSS"]}
             links={{
                 preview: "#",
-                blog: "#",
                 github: "#"
             }}>
             <p class="mb-5 first-letter:pl-5">Landing page projetada para a venda de alimentos em Cuba, com um estilo moderno e atraente priorizando velocidade e experiência do usuário.</p>
