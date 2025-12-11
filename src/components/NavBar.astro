@@ -12,8 +12,8 @@ const { sections } = Astro.props;
 
 <nav class="fixed max-lg:bottom-0 pb-5 lg:top-0 lg:left-0 lg:pb-0 lg:pt-5 z-50 w-full flex justify-center bg-linear-to-b from-transparent to-white dark:to-gray-900 lg:bg-linear-to-t lg:from-transparent lg:to-white dark:lg:to-gray-900">
     <div class="w-fit flex items-center gap-3">
-        <ul class="min-w-[302px] px-4 py-2 text-gray-800 dark:text-gray-100 flex items-center gap-3 bg-white/60 dark:bg-gray-900/60 backdrop-blur-md rounded-full shadow shadow-gray-600/60 dark:shadow-gray-900/60"> 
-            <div class="flex-1 flex justify-between lg:gap-5">{
+        <ul class="px-4 py-2 text-gray-800 dark:text-gray-100 flex items-center gap-3 bg-white/60 dark:bg-gray-900/60 backdrop-blur-md rounded-full shadow shadow-gray-600/60 dark:shadow-gray-900/60"> 
+            <div class="flex-1 flex gap-3 lg:gap-5">{
                     sections.map((section, index)=> (
                         <li id={`list-item-${ index }`} class={`text-sm md:text-base ${ index === 2 ? "hidden lg:block" : null }`}>
                             <a href={ index === 3 ? '#' : `#${ hrefSections[index] }` }>{ section }</a>
