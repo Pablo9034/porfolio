@@ -26,23 +26,26 @@ const translationsLabel = {
     <button>
         <selectedcontent></selectedcontent>
     </button>
-{
-    translations.map(({ icon: Icon, label }, index)=> {
-        const language = label.toLowerCase();
-        const url = Astro.originPathname.split('/').slice(2).join('/');
-        const localUrl = getRelativeLocaleUrl(language, url);
 
-        return (
-            <option value={ language } selected={ Astro.originPathname.includes(language) } class="py-1.5 px-2">
-                <a href={ localUrl } class="flex items-center gap-3 cursor-pointer hover:bg-gray-200/50 dark:hover:bg-gray-700/50">    
-                    <Icon width="24" height="24" aria-hidden={ true } />
-                    <span>{ translationsLabel[label] }</span>
-                </a>
-            </option>
-            <hr class:list={[
-                "w-4/5 mx-auto border-gray-400/50", 
-                {"hidden": (index === translations.length - 1)}
-            ]} />
-        );
-    })    
-}</select>
+    {
+        translations.map(({ icon: Icon, label }, index)=> {
+            const language = label.toLowerCase();
+            const url = Astro.originPathname.split('/').slice(2).join('/');
+            const localUrl = getRelativeLocaleUrl(language, url);
+
+            return (
+                <option value={ language } selected={ Astro.originPathname.includes(language) } class="py-1.5 px-2">
+                    <a href={ localUrl } class="flex items-center gap-3 cursor-pointer hover:bg-gray-200/50 dark:hover:bg-gray-700/50">    
+                        <Icon width="24" height="24" aria-hidden={ true } />
+                        <span>{ translationsLabel[label] }</span>
+                    </a>
+                </option>
+
+                <hr class:list={[
+                    "w-4/5 mx-auto border-gray-400/50", 
+                    {"hidden": (index === translations.length - 1)}
+                ]} />
+            );
+        })    
+    }
+</select>

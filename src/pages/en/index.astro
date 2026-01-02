@@ -2,7 +2,6 @@
 import { Picture } from 'astro:assets';
 
 import Layout from '@layouts/Layout.astro';
-import NavBar from '@components/NavBar.astro';
 import LinksButtons from '@components/LinksButtons.astro';
 import Section from '@components/Section.astro';
 import ExperienceItem from '@components/ExperienceItem.astro';
@@ -27,8 +26,6 @@ import Whatsapp from '@assets/icons/whatsapp.svg';
 ---
 
 <Layout title="Pablo Alberto | Programmer and Developer">
-    <NavBar sections={[ "Experience", "Proyects", "About me" ]} client:load />
-
     <header class="h-screen flex flex-col justify-center gap-5">
         <Picture src={Profile} formats={['avif', 'webp']} alt="Pablo's profile photo" class="h-96 object-contain mask-b-from-75% mx-auto shadow-gray-600/60" />
 

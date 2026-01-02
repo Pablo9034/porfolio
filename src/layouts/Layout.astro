@@ -2,6 +2,7 @@
 import '@styles';
 import { ClientRouter } from 'astro:transitions';
 import Backgrounds from '@components/utilities/Backgrounds.astro';
+import NavBar from '@components/NavBar.astro';
 
 interface Props {
   title: string;
@@ -21,10 +22,11 @@ const currentLanguage = Astro.originPathname.split('/').at(1);
 		<meta name="generator" content={Astro.generator} />
 		<title>{ title }</title>
 	</head>
-	<body class="text-black dark:text-white">
+	<body class="text-black dark:text-white font-['Inter']">
 		<main class="max-w-4xl mx-auto">
 			<Backgrounds />
 
+			<NavBar client:load />
 			<slot />
 		</main>
 	</body>
